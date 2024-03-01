@@ -33,8 +33,10 @@ contract MQuizContract{
   public onlyOwner nonZero(_hourlyrate) {
     hourlyrate = _hourlyrate;
   }
-  function CalculateTotSal(uint256 _totalsalary)
-  public onlyOwner nonZero(_totalsalary) {
-    totalsalary = _totalsalary;
-  }
+  function calculateTotSal() public onlyOwner returns (uint256) {
+  require(hourlyrate > 0, "Hourly rate must be greater than zero");
+   require(hoursworked > 0, "hours worked must be greater than zero");
+  totalsalary = hourlyrate * hoursworked;
+  return totalsalary;
+}
   }
